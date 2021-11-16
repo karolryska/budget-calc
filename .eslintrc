@@ -1,0 +1,17 @@
+{
+    "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended"],
+    "plugins": ["prettier"],
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "parser": "babel-eslint",
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            { "bracketSameLine": false, "singleQuote": true, "tabWidth": 4 }
+        ],
+        "import/newline-after-import": ["error", { "count": 1 }]
+    }
+}
