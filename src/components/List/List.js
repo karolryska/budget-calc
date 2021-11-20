@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
+import { Storage } from 'context/context';
 import Section from 'components/Section/Section';
 import ListItem from 'components/ListItem/ListItem';
 
@@ -11,12 +13,14 @@ const Wrapper = styled.ul`
 `;
 
 const List = () => {
+    const { store } = useContext(Storage);
+
     return (
         <Section>
             <Wrapper>
-                <ListItem>item</ListItem>
-                <ListItem>item</ListItem>
-                <ListItem>item</ListItem>
+                {store.map((item) => (
+                    <ListItem data={item} key={item.id} />
+                ))}
             </Wrapper>
         </Section>
     );
