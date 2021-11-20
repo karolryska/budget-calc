@@ -13,11 +13,11 @@ const Header = styled.h1`
     font-size: 40px;
 `;
 
-const Sum = () => {
+const Sum = ({ value }) => {
     return (
-        <Section alignment="center">
+        <Section>
             <Wrapper>
-                <Header>100</Header>
+                <Header>{value}</Header>
             </Wrapper>
         </Section>
     );
