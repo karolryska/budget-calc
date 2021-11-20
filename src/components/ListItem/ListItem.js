@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { MdDelete } from 'react-icons/md';
+import { Storage } from 'context/context';
 
 const Wrapper = styled.li`
     position: relative;
@@ -42,16 +44,34 @@ const DeteleIcon = styled(MdDelete)`
     }
 `;
 
-const ListItem = () => {
+const Price = styled.p`
+    position: relative;
+    color: ${(props) => (props.type === 'income' ? 'green' : 'red')};
+    &::before {
+        position: absolute;
+        top: 0;
+        left: ${(props) => (props.type === 'income' ? '-12px' : '-10px')};
+        content: '${(props) => (props.type === 'income' ? '+' : '-')}';
+    }
+`;
+
+const Listdata = ({ data }) => {
+    const { store, updateStore } = useContext(Storage);
+    const handleClick = (id) => {
+        const newArray = store.filter((item) => item.id !== id);
+        console.log(newArray);
+        updateStore(newArray);
+    };
+
     return (
         <Wrapper>
-            <p>category</p>
-            <p>+ 250</p>
-            <DeleteButton>
+            <p>{data.category}</p>
+            <Price type={data.type}>{data.price}</Price>
+            <DeleteButton onClick={() => handleClick(data.id)}>
                 <DeteleIcon />
             </DeleteButton>
         </Wrapper>
     );
 };
 
-export default ListItem;
+export default Listdata;
