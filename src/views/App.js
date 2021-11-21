@@ -10,6 +10,7 @@ import LineGraph from 'components/LineGraph/LineGraph';
 import AddButton from 'components/AddButton/AddButton';
 import { sumRecords } from 'helpers/sumRecords';
 import { formatData } from 'helpers/formatData';
+import useWidth from 'hooks/useWidth';
 
 const Wrapper = styled.div`
     display: flex;
@@ -18,6 +19,30 @@ const Wrapper = styled.div`
     width: 100vw;
     padding: 20px;
     background-color: #bdbdbd;
+
+    @media (min-width: 769px) {
+        flex-direction: row;
+        align-items: stretch;
+    }
+`;
+
+const DataWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-height: 50vh;
+    margin: 0 0 20px 0;
+
+    @media (min-width: 769px) {
+        height: auto;
+        width: 30%;
+        margin: 0 20px 0 0;
+    }
+`;
+
+const ChartsWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 `;
 
 const ButtonWrapper = styled.div`
@@ -31,20 +56,33 @@ const App = () => {
     const [isFormActive, setIsFormActive] = useState(false);
     const { store } = useContext(Storage);
     const handleClick = () => setIsFormActive(!isFormActive);
+    const [isMobile] = useWidth();
     return (
         <>
             {isFormActive ? (
                 <Form onSave={handleClick} />
             ) : (
                 <Wrapper>
-                    <Sum value={sumRecords(store)} />
-                    <List />
+                    <DataWrapper>
+                        <Section>
+                            <Sum value={sumRecords(store)} />
+                        </Section>
+                        <Section flexGrow>
+                            <List />
+                        </Section>
+                    </DataWrapper>
+                    <ChartsWrapper>
+                        <Section height={isMobile ? '200px' : '50%'}>
+                            <LineGraph
+                                data={formatData(store)}
+                                dataKey="value"
+                            />
+                        </Section>
+                        <Section height={isMobile ? '200px' : '50%'}></Section>
+                    </ChartsWrapper>
                     <ButtonWrapper>
                         <AddButton handleClick={handleClick} />
                     </ButtonWrapper>
-                    <Section height="200px">
-                        <LineGraph data={formatData(store)} dataKey="value" />
-                    </Section>
                 </Wrapper>
             )}
         </>
