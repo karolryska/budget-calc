@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Section from 'components/Section/Section';
 
 const Wrapper = styled.div`
     display: flex;
@@ -15,11 +14,9 @@ const Header = styled.h1`
 
 const Sum = ({ value }) => {
     return (
-        <Section>
-            <Wrapper>
-                <Header>{value}</Header>
-            </Wrapper>
-        </Section>
+        <Wrapper>
+            <Header>{value}</Header>
+        </Wrapper>
     );
 };
 
