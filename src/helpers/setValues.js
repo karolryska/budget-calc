@@ -1,4 +1,4 @@
-export const formatData = (data) => {
+const setValues = (data) => {
     let formattedData = data;
     let currentSum = 0;
     formattedData.forEach((element) => {
@@ -7,5 +7,8 @@ export const formatData = (data) => {
             : (currentSum -= element.price);
         element.value = currentSum;
     });
-    return [{ value: 0 }].concat(formattedData);
+
+    return formattedData;
 };
+
+export default setValues;
