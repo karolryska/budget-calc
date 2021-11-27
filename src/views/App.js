@@ -8,8 +8,6 @@ import Sum from 'components/Sum/Sum';
 import List from 'components/List/List';
 import LineGraph from 'components/LineGraph/LineGraph';
 import AddButton from 'components/AddButton/AddButton';
-import { sumRecords } from 'helpers/sumRecords';
-import { formatData } from 'helpers/formatData';
 import useWidth from 'hooks/useWidth';
 
 const Wrapper = styled.div`
@@ -54,7 +52,7 @@ const ButtonWrapper = styled.div`
 
 const App = () => {
     const [isFormActive, setIsFormActive] = useState(false);
-    const { store } = useContext(Storage);
+    const { sum, store } = useContext(Storage);
     const handleClick = () => setIsFormActive(!isFormActive);
     const [isMobile] = useWidth();
     return (
@@ -65,7 +63,7 @@ const App = () => {
                 <Wrapper>
                     <DataWrapper>
                         <Section>
-                            <Sum value={sumRecords(store)} />
+                            <Sum value={sum} />
                         </Section>
                         <Section flexGrow>
                             <List />
@@ -73,10 +71,7 @@ const App = () => {
                     </DataWrapper>
                     <ChartsWrapper>
                         <Section height={isMobile ? '200px' : '50%'}>
-                            <LineGraph
-                                data={formatData(store)}
-                                dataKey="value"
-                            />
+                            <LineGraph data={store} dataKey="value" />
                         </Section>
                         <Section height={isMobile ? '200px' : '50%'}></Section>
                     </ChartsWrapper>
