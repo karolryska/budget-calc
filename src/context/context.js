@@ -1,4 +1,5 @@
 import { createContext, useState } from 'react';
+import { saveData, getData } from 'helpers/manageData';
 
 const context = {
     store: [],
@@ -8,9 +9,10 @@ const context = {
 export const Storage = createContext(context);
 
 const AppProvider = ({ children }) => {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(getData);
     const updateItems = (data) => {
         setItems(data);
+        saveData(data);
     };
 
     return (
