@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import styled from 'styled-components';
 import { MdDelete } from 'react-icons/md';
 import { Storage } from 'context/context';
+import removeRecord from 'helpers/removeRecord';
 
 const Wrapper = styled.li`
     position: relative;
@@ -58,9 +59,8 @@ const Price = styled.p`
 const Listdata = ({ data }) => {
     const { store, updateStore } = useContext(Storage);
     const handleClick = (id) => {
-        const newArray = store.filter((item) => item.id !== id);
-        console.log(newArray);
-        updateStore(newArray);
+        const updatedArray = removeRecord(store, id);
+        updateStore(updatedArray);
     };
 
     return (
