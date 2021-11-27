@@ -11,8 +11,8 @@ const context = {
 export const Storage = createContext(context);
 
 const AppProvider = ({ children }) => {
-    const [items, setItems] = useState(getData);
-    const [sum, setSum] = useState(0);
+    const [items, setItems] = useState(getData());
+    const [sum, setSum] = useState(sumRecords(items));
     const updateItems = (data) => {
         setSum(sumRecords(data));
         setItems(data);
