@@ -1,7 +1,7 @@
-const calculateValue = (currentSum, newItem) => {
-    return newItem.type === 'income'
-        ? Number(currentSum) + Number(newItem.price)
-        : Number(currentSum) - Number(newItem.price);
+const calculateValue = (currentSum, type, price) => {
+    return type === 'income'
+        ? Number(currentSum) + Number(price)
+        : Number(currentSum) - Number(price);
 };
 
 export default calculateValue;
