@@ -22,9 +22,9 @@ const Info = styled.p`
 const LineGraph = ({ data, dataKey }) => {
     return (
         <Wrapper>
-            {data.length > 1 ? (
+            {data.length > 0 ? (
                 <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={data}>
+                    <LineChart data={[{ value: 0 }].concat(data)}>
                         <CartesianGrid strokeDasharray="5 5" />
                         <Tooltip />
                         <Line
