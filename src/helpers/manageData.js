@@ -6,6 +6,6 @@ export const getData = () => {
     if (localStorage.getItem('storage')) {
         return JSON.parse(localStorage.getItem('storage'));
     } else {
-        return [];
+        return { items: [], sum: 0, categoriesSum: {} };
     }
 };
