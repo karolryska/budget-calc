@@ -9,14 +9,21 @@ export const expenses = [
     'other',
 ];
 
-export const sumCategories = (data) => {
-    const categories = Object.fromEntries(
-        expenses.map((category) => [category, 0])
-    );
+const formattedExpenses = [];
+expenses.forEach((category) =>
+    formattedExpenses.push({ name: category, sum: 0 })
+);
 
+export const sumCategories = (data) => {
+    const categories = formattedExpenses;
+    categories.forEach((category) => (category.sum = 0));
     data.forEach((record) => {
-        if (record.type === 'expense')
-            categories[record.category] += record.price;
+        if (record.type === 'expense') {
+            const index = categories.findIndex(
+                (category) => category.name === record.category
+            );
+            categories[index].sum += record.price;
+        }
     });
 
     return categories;
