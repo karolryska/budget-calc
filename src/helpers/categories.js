@@ -9,20 +9,17 @@ export const expenses = [
     'other',
 ];
 
-const formattedExpenses = [];
-expenses.forEach((category) =>
-    formattedExpenses.push({ name: category, sum: 0 })
-);
-
 export const sumCategories = (data) => {
-    const categories = formattedExpenses;
-    categories.forEach((category) => (category.sum = 0));
+    const categories = [];
+
     data.forEach((record) => {
-        if (record.type === 'expense') {
-            const index = categories.findIndex(
-                (category) => category.name === record.category
-            );
+        const index = categories.findIndex(
+            (category) => category.name === record.category
+        );
+        if (record.type === 'expense' && categories[index]) {
             categories[index].sum += record.price;
+        } else if (record.type === 'expense' && !categories[index]) {
+            categories.push({ name: record.category, sum: record.price });
         }
     });
 
