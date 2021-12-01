@@ -7,6 +7,7 @@ import Section from 'components/Section/Section';
 import Sum from 'components/Sum/Sum';
 import List from 'components/List/List';
 import LineGraph from 'components/LineGraph/LineGraph';
+import PieGraph from 'components/PieGraph/PieGraph';
 import AddButton from 'components/AddButton/AddButton';
 import useWidth from 'hooks/useWidth';
 
@@ -52,7 +53,7 @@ const ButtonWrapper = styled.div`
 
 const App = () => {
     const [isFormActive, setIsFormActive] = useState(false);
-    const { sum, store } = useContext(Storage);
+    const { sum, store, categoriesSum } = useContext(Storage);
     const handleClick = () => setIsFormActive(!isFormActive);
     const [isMobile] = useWidth();
     return (
@@ -73,7 +74,9 @@ const App = () => {
                         <Section height={isMobile ? '200px' : '50%'}>
                             <LineGraph data={store} dataKey="value" />
                         </Section>
-                        <Section height={isMobile ? '200px' : '50%'}></Section>
+                        <Section height={isMobile ? '200px' : '50%'}>
+                            <PieGraph data={categoriesSum} />
+                        </Section>
                     </ChartsWrapper>
                     <ButtonWrapper>
                         <AddButton handleClick={handleClick} />
