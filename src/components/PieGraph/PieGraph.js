@@ -17,8 +17,8 @@ const PieGraph = ({ data }) => {
     return (
         <Wrapper>
             {data.length > 0 ? (
-                <ResponsiveContainer width="100%" height="100%">
-                    <PieChart width="100%" height="100%">
+                <ResponsiveContainer width="99%" height="99%">
+                    <PieChart>
                         <Pie
                             data={data}
                             dataKey="sum"
