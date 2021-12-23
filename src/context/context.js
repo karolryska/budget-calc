@@ -5,7 +5,10 @@ import { sumCategories } from 'helpers/categories';
 
 const context = {
     sum: 0,
-    categoriesSum: {},
+    categoriesSum: {
+        income: [],
+        expense: [],
+    },
     store: [],
     updateStore: null,
 };
@@ -17,10 +20,13 @@ const AppProvider = ({ children }) => {
     const [sum, setSum] = useState(getData().sum);
     const [categoriesSum, setCategoriesSum] = useState(getData().categoriesSum);
 
-    const updateItems = (data) => {
+    const updateItems = (data, currentType) => {
         setItems(data);
         setSum(sumRecords(data));
-        setCategoriesSum(sumCategories(data));
+
+        const categories = categoriesSum;
+        categories[currentType] = sumCategories(data, currentType);
+        setCategoriesSum(categories);
     };
 
     useEffect(() =>
