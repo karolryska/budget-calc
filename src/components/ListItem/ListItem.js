@@ -58,16 +58,16 @@ const Price = styled.p`
 
 const Listdata = ({ data }) => {
     const { store, updateStore } = useContext(Storage);
-    const handleClick = (id) => {
+    const handleClick = (id, type) => {
         const updatedArray = removeRecord(store, id);
-        updateStore(updatedArray);
+        updateStore(updatedArray, type);
     };
 
     return (
         <Wrapper>
             <p>{data.category}</p>
             <Price type={data.type}>{data.price}</Price>
-            <DeleteButton onClick={() => handleClick(data.id)}>
+            <DeleteButton onClick={() => handleClick(data.id, data.type)}>
                 <DeteleIcon />
             </DeleteButton>
         </Wrapper>
