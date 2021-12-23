@@ -75,7 +75,7 @@ const App = () => {
                             <LineGraph data={store} dataKey="value" />
                         </Section>
                         <Section height={isMobile ? '200px' : '50%'}>
-                            <PieGraph data={categoriesSum} />
+                            <PieGraph data={categoriesSum.expense} />
                         </Section>
                     </ChartsWrapper>
                     <ButtonWrapper>
