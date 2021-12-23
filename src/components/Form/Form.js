@@ -53,7 +53,8 @@ const Form = ({ onSave }) => {
                 price: Number(data.price),
                 value: calculateValue(sum, type, Number(data.price)),
                 id: uuidv4(),
-            })
+            }),
+            type
         );
         onSave();
     };
