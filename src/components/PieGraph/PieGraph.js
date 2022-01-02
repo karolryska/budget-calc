@@ -5,8 +5,14 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 50%;
     width: 100%;
+
+    @media (min-width: 769px) {
+        flex-direction: row;
+        height: 100%;
+        width: 50%;
+    }
 `;
 
 const Info = styled.p`
@@ -22,7 +28,7 @@ const PieGraph = ({ data }) => {
                         <Pie
                             data={data}
                             dataKey="sum"
-                            outerRadius="70%"
+                            outerRadius="75%"
                             fill="#8884d8"
                         ></Pie>
                     </PieChart>
