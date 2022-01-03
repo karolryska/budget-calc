@@ -13,7 +13,7 @@ const Wrapper = styled.li`
     width: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
-    background-color: #f5f5f5;
+    background-color: #f2f2f2;
     overflow: hidden;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
     transition: 0.2s;
@@ -81,7 +81,7 @@ const DeteleIcon = styled(TiDelete)`
     color: #ffffff;
 `;
 
-const Listdata = ({ data, handleItemClick, isActive }) => {
+const ListItem = ({ data, handleItemClick, isActive }) => {
     const { store, updateStore } = useContext(Storage);
 
     const categoryColor = () => {
@@ -118,4 +118,4 @@ const Listdata = ({ data, handleItemClick, isActive }) => {
     );
 };
 
-export default Listdata;
+export default ListItem;
