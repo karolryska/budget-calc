@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import { Storage } from 'context/context';
 import Form from 'components/Form/Form';
+import AppBar from 'components/AppBar/AppBar';
 import Section from 'components/Section/Section';
 import Sum from 'components/Sum/Sum';
 import List from 'components/List/List';
@@ -11,11 +12,17 @@ import PieGraph from 'components/PieGraph/PieGraph';
 import AddButton from 'components/AddButton/AddButton';
 import useWidth from 'hooks/useWidth';
 
-const ContentWrapper = styled.div`
+const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
+`;
+
+const ContentWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
     padding: 20px;
     background-color: #bdbdbd;
 
@@ -62,28 +69,31 @@ const App = () => {
             {isFormActive ? (
                 <Form onSave={handleClick} />
             ) : (
-                <ContentWrapper>
-                    <DataWrapper>
-                        <Section>
-                            <Sum value={sum} />
-                        </Section>
-                        <Section flexGrow>
-                            <List />
-                        </Section>
-                    </DataWrapper>
-                    <ChartsWrapper>
-                        <Section height={isMobile ? '200px' : '50%'}>
-                            <LineGraph data={store} dataKey="value" />
-                        </Section>
-                        <Section height={isMobile ? '600px' : '50%'}>
-                            <PieGraph data={categoriesSum.income} />
-                            <PieGraph data={categoriesSum.expense} />
-                        </Section>
-                    </ChartsWrapper>
+                <Wrapper>
+                    <AppBar />
+                    <ContentWrapper>
+                        <DataWrapper>
+                            <Section>
+                                <Sum value={sum} />
+                            </Section>
+                            <Section flexGrow>
+                                <List />
+                            </Section>
+                        </DataWrapper>
+                        <ChartsWrapper>
+                            <Section height={isMobile ? '200px' : '50%'}>
+                                <LineGraph data={store} dataKey="value" />
+                            </Section>
+                            <Section height={isMobile ? '600px' : '50%'}>
+                                <PieGraph data={categoriesSum.income} />
+                                <PieGraph data={categoriesSum.expense} />
+                            </Section>
+                        </ChartsWrapper>
+                    </ContentWrapper>
                     <ButtonWrapper>
                         <AddButton handleClick={handleClick} />
                     </ButtonWrapper>
-                </ContentWrapper>
+                </Wrapper>
             )}
         </>
     );
