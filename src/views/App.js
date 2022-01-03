@@ -11,7 +11,7 @@ import PieGraph from 'components/PieGraph/PieGraph';
 import AddButton from 'components/AddButton/AddButton';
 import useWidth from 'hooks/useWidth';
 
-const Wrapper = styled.div`
+const ContentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -62,7 +62,7 @@ const App = () => {
             {isFormActive ? (
                 <Form onSave={handleClick} />
             ) : (
-                <Wrapper>
+                <ContentWrapper>
                     <DataWrapper>
                         <Section>
                             <Sum value={sum} />
@@ -83,7 +83,7 @@ const App = () => {
                     <ButtonWrapper>
                         <AddButton handleClick={handleClick} />
                     </ButtonWrapper>
-                </Wrapper>
+                </ContentWrapper>
             )}
         </>
     );
