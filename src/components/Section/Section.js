@@ -8,8 +8,9 @@ const Wrapper = styled.section`
     width: 100%;
     padding: 16px;
     margin-bottom: 20px;
-    border-radius: 20px;
+    border-radius: 5px;
     background-color: #fafafa;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 
     &:last-child {
         margin-bottom: 0;
