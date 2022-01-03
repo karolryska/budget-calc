@@ -1,53 +1,66 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { MdDelete } from 'react-icons/md';
+import { TiDelete } from 'react-icons/ti';
+
 import { Storage } from 'context/context';
 import removeRecord from 'helpers/removeRecord';
+import { incomes, expenses } from 'helpers/categories';
 
 const Wrapper = styled.li`
-    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    padding: 0 10px;
-    margin-bottom: 30px;
-
-    &:before {
-        position: absolute;
-        bottom: -16px;
-        left: 0;
-        content: '';
-        height: 1px;
-        width: 100%;
-        background-color: #000000;
-    }
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+    transition: 0.2s;
 
     &:last-child {
         margin-bottom: 0;
+    }
 
-        &:before {
-            display: none;
-        }
+    &:hover {
+        background-color: #eeeeee;
     }
 `;
 
-const DeleteButton = styled.button`
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+const DataWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-grow: 1;
+    padding: 10px;
 `;
 
-const DeteleIcon = styled(MdDelete)`
-    transform: scale(2) translateY(1px);
-    &:hover {
-        color: #b71c1c;
+const Category = styled.p`
+    position: relative;
+    padding-left: 20px;
+
+    &::before {
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 14px;
+        width: 14px;
+        border-radius: 7px;
+        border: 4px solid;
+        border-color: ${(props) => props.color};
+        background-color: ${(props) => props.color};
+        background-color: ${(props) =>
+            props.type === 'income' && 'transparent'};
+        transform: translateY(-50%);
+        content: '';
     }
 `;
 
 const Price = styled.p`
     position: relative;
-    color: ${(props) => (props.type === 'income' ? 'green' : 'red')};
+    color: ${(props) => (props.type === 'income' ? '#4caf50' : '#f44336')};
+
     &::before {
         position: absolute;
         top: 0;
@@ -56,20 +69,51 @@ const Price = styled.p`
     }
 `;
 
-const Listdata = ({ data }) => {
+const DeleteButton = styled.button`
+    padding: 0 15px;
+    border: none;
+    background-color: #d50000;
+    cursor: pointer;
+`;
+
+const DeteleIcon = styled(TiDelete)`
+    transform: scale(2) translateY(1px);
+    color: #ffffff;
+`;
+
+const Listdata = ({ data, handleItemClick, isActive }) => {
     const { store, updateStore } = useContext(Storage);
-    const handleClick = (id, type) => {
+
+    const categoryColor = () => {
+        return data.type === 'income'
+            ? incomes[data.category].color
+            : expenses[data.category].color;
+    };
+
+    const handleWrapperClick = () => {
+        handleItemClick(data.id);
+    };
+
+    const handleDeleteClick = (id, type) => {
         const updatedArray = removeRecord(store, id);
         updateStore(updatedArray, type);
     };
 
     return (
-        <Wrapper>
-            <p>{data.category}</p>
-            <Price type={data.type}>{data.price}</Price>
-            <DeleteButton onClick={() => handleClick(data.id, data.type)}>
-                <DeteleIcon />
-            </DeleteButton>
+        <Wrapper onClick={handleWrapperClick}>
+            <DataWrapper>
+                <Category type={data.type} color={categoryColor}>
+                    {data.category}
+                </Category>
+                <Price type={data.type}>{data.price}</Price>
+            </DataWrapper>
+            {isActive && (
+                <DeleteButton
+                    onClick={() => handleDeleteClick(data.id, data.type)}
+                >
+                    <DeteleIcon />
+                </DeleteButton>
+            )}
         </Wrapper>
     );
 };
