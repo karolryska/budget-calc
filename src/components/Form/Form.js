@@ -5,7 +5,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Storage } from 'context/context';
 import calculateValue from 'helpers/calculateValue';
-import { incomes, expenses } from 'helpers/categories';
+import {
+    incomesList as incomes,
+    expensesList as expenses,
+} from 'helpers/categories';
 
 const Wrapper = styled.form`
     display: flex;
