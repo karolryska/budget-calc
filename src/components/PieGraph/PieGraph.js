@@ -1,4 +1,4 @@
-import { ResponsiveContainer, PieChart, Pie } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -22,15 +22,14 @@ const Info = styled.p`
 const PieGraph = ({ data }) => {
     return (
         <Wrapper>
-            {data.length > 0 ? (
+            {data && data.length > 0 ? (
                 <ResponsiveContainer width="99%" height="99%">
                     <PieChart>
-                        <Pie
-                            data={data}
-                            dataKey="sum"
-                            outerRadius="75%"
-                            fill="#8884d8"
-                        ></Pie>
+                        <Pie data={data} dataKey="sum" outerRadius="75%">
+                            {data.map((category, i) => (
+                                <Cell key={`cell-${i}`} fill={category.color} />
+                            ))}
+                        </Pie>
                     </PieChart>
                 </ResponsiveContainer>
             ) : (
