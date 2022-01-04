@@ -25,7 +25,13 @@ const PieGraph = ({ data }) => {
             {data && data.length > 0 ? (
                 <ResponsiveContainer width="99%" height="99%">
                     <PieChart>
-                        <Pie data={data} dataKey="sum" outerRadius="75%">
+                        <Pie
+                            data={data}
+                            dataKey="sum"
+                            innerRadius="50%"
+                            outerRadius="75%"
+                            paddingAngle={6}
+                        >
                             {data.map((category, i) => (
                                 <Cell key={`cell-${i}`} fill={category.color} />
                             ))}
