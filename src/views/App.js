@@ -84,7 +84,7 @@ const App = () => {
                             <Section height={isMobile ? '200px' : '50%'}>
                                 <LineGraph data={store} dataKey="value" />
                             </Section>
-                            <Section height={isMobile ? '600px' : '50%'}>
+                            <Section height={!isMobile && '50%'}>
                                 <PieGraph data={categoriesSum.income} />
                                 <PieGraph data={categoriesSum.expense} />
                             </Section>
