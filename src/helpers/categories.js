@@ -55,6 +55,9 @@ export const sumCategories = (data, currentType) => {
         (record) => record.type === currentType
     );
 
+    const currentTypeList = () =>
+        currentType === 'income' ? incomes : expenses;
+
     const categories = [];
 
     currentTypeRecords.forEach((record) => {
@@ -64,7 +67,11 @@ export const sumCategories = (data, currentType) => {
         if (categories[index]) {
             categories[index].sum += record.price;
         } else {
-            categories.push({ name: record.category, sum: record.price });
+            categories.push({
+                name: record.category,
+                sum: record.price,
+                color: currentTypeList()[record.category].color,
+            });
         }
     });
 
