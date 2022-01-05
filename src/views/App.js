@@ -10,45 +10,40 @@ import List from 'components/List/List';
 import LineGraph from 'components/LineGraph/LineGraph';
 import PieGraph from 'components/PieGraph/PieGraph';
 import AddButton from 'components/AddButton/AddButton';
-import useWidth from 'hooks/useWidth';
+import useHeight from 'hooks/useHeight';
 
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     width: 100vw;
+
+    @media (min-width: 769px) {
+        height: auto;
+    }
 `;
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.main`
     display: flex;
     flex-direction: column;
-    flex-grow: 1;
+    width: 100vw;
     padding: 20px;
     background-color: #bdbdbd;
 
     @media (min-width: 769px) {
-        flex-direction: row;
-        align-items: stretch;
+        display: grid;
+        grid-template-columns: minmax(250px, 25%) 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        grid-gap: 20px;
+        grid-template-areas:
+            'sum lineChart'
+            'records lineChart'
+            'records lineChart'
+            'records pieChart'
+            'records pieChart'
+            'records pieChart';
+        height: ${(props) => (props.height > 668 ? props.height : 668)}px;
     }
-`;
-
-const DataWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    min-height: 50vh;
-    margin: 0 0 20px 0;
-
-    @media (min-width: 769px) {
-        height: auto;
-        width: 30%;
-        margin: 0 20px 0 0;
-    }
-`;
-
-const ChartsWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
 `;
 
 const ButtonWrapper = styled.div`
@@ -59,10 +54,10 @@ const ButtonWrapper = styled.div`
 `;
 
 const App = () => {
+    const [height] = useHeight();
     const [isFormActive, setIsFormActive] = useState(false);
     const { sum, store, categoriesSum } = useContext(Storage);
     const handleClick = () => setIsFormActive(!isFormActive);
-    const [isMobile] = useWidth();
 
     return (
         <>
@@ -71,24 +66,20 @@ const App = () => {
             ) : (
                 <Wrapper>
                     <AppBar />
-                    <ContentWrapper>
-                        <DataWrapper>
-                            <Section>
-                                <Sum value={sum} />
-                            </Section>
-                            <Section flexGrow>
-                                <List />
-                            </Section>
-                        </DataWrapper>
-                        <ChartsWrapper>
-                            <Section height={isMobile ? '200px' : '50%'}>
-                                <LineGraph data={store} dataKey="value" />
-                            </Section>
-                            <Section height={!isMobile && '50%'}>
-                                <PieGraph data={categoriesSum.income} />
-                                <PieGraph data={categoriesSum.expense} />
-                            </Section>
-                        </ChartsWrapper>
+                    <ContentWrapper height={height - 100}>
+                        <Section area="sum">
+                            <Sum value={sum} />
+                        </Section>
+                        <Section area="records">
+                            <List />
+                        </Section>
+                        <Section area="lineChart">
+                            <LineGraph data={store} dataKey="value" />
+                        </Section>
+                        <Section area="pieChart">
+                            <PieGraph data={categoriesSum.income} />
+                            <PieGraph data={categoriesSum.expense} />
+                        </Section>
                     </ContentWrapper>
                     <ButtonWrapper>
                         <AddButton handleClick={handleClick} />
