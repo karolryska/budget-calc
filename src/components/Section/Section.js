@@ -3,14 +3,14 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
-    flex-grow: ${(props) => props.flexGrow && '1'};
-    height: ${(props) => props.height && props.height};
+    height: 100%;
     width: 100%;
     padding: 16px;
     margin-bottom: 20px;
     border-radius: 5px;
     background-color: #fafafa;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    grid-area: ${(props) => props.area};
 
     &:last-child {
         margin-bottom: 0;
@@ -18,15 +18,12 @@ const Wrapper = styled.section`
 
     @media (min-width: 769px) {
         flex-direction: row;
+        margin-bottom: 0;
     }
 `;
 
-const Section = ({ children, height, flexGrow }) => {
-    return (
-        <Wrapper height={height} flexGrow={flexGrow}>
-            {children}
-        </Wrapper>
-    );
+const Section = ({ children, area }) => {
+    return <Wrapper area={area}>{children}</Wrapper>;
 };
 
 export default Section;
