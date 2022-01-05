@@ -23,7 +23,7 @@ const LineGraph = ({ data, dataKey }) => {
     return (
         <Wrapper>
             {data.length > 0 ? (
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer width="99.9%" height="100%">
                     <LineChart data={[{ value: 0 }].concat(data)}>
                         <CartesianGrid strokeDasharray="5 5" />
                         <Tooltip />
