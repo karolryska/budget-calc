@@ -19,6 +19,7 @@ const Wrapper = styled.section`
     @media (min-width: 769px) {
         flex-direction: row;
         margin-bottom: 0;
+        overflow-x: hidden;
     }
 `;
 
