@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { useForm } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
+import { MdArrowBackIosNew } from 'react-icons/md';
 
 import { Storage } from 'context/context';
 import calculateValue from 'helpers/calculateValue';
@@ -11,22 +12,29 @@ import {
 } from 'helpers/categories';
 
 const Wrapper = styled.form`
+    position: relative;
     display: flex;
     flex-direction: column;
-    width: 160px;
+    /* padding: 20px; */
+    /* background-color: pink; */
+`;
+
+const Header = styled.h1`
+    margin-bottom: 30px;
+    font-size: 28px;
 `;
 
 const RadioInputs = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 `;
 
 const InputWrapper = styled.p`
     display: flex;
     flex-direction: column;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 `;
 
 const RadioLabel = styled.label`
@@ -34,7 +42,48 @@ const RadioLabel = styled.label`
 `;
 
 const Label = styled.label`
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+`;
+
+const SelectInput = styled.select`
+    padding: 5px;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+`;
+
+const Input = styled.input`
+    padding: 5px;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+`;
+
+const Button = styled.button`
+    padding: 6px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1976d2;
+    color: #ffffff;
+    cursor: pointer;
+`;
+
+const BackButton = styled.button`
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border: none;
+    background-color: transparent;
+    color: #ffffff;
+    cursor: pointer;
+
+    & > * {
+        font-size: 30px;
+    }
 `;
 
 const Form = ({ onSave }) => {
@@ -64,7 +113,10 @@ const Form = ({ onSave }) => {
 
     return (
         <Wrapper onSubmit={handleSubmit(onSubmit)}>
-            <h2>Add record!</h2>
+            <BackButton onClick={onSave}>
+                <MdArrowBackIosNew />
+            </BackButton>
+            <Header>Add record!</Header>
             <RadioInputs>
                 <p>
                     <input
@@ -89,22 +141,22 @@ const Form = ({ onSave }) => {
             </RadioInputs>
             <InputWrapper>
                 <Label>category</Label>
-                <select {...register('category', { required: true })}>
-                    {categories.map((category) => (
+                <SelectInput {...register('category', { required: true })}>
+                    {categories.map((category, i) => (
                         <option value={category} key={uuidv4()}>
                             {category}
                         </option>
                     ))}
-                </select>
+                </SelectInput>
             </InputWrapper>
             <InputWrapper>
                 <Label>price</Label>
-                <input
+                <Input
                     type="number"
                     {...register('price', { required: true })}
                 />
             </InputWrapper>
-            <button type="submit">add</button>
+            <Button type="submit">add</Button>
         </Wrapper>
     );
 };
