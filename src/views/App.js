@@ -49,13 +49,6 @@ const ContentWrapper = styled.main`
     }
 `;
 
-const ButtonWrapper = styled.div`
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    margin: 40px;
-`;
-
 const App = () => {
     const [height] = useHeight();
     const [isFormActive, setIsFormActive] = useState(false);
@@ -86,9 +79,7 @@ const App = () => {
                             <PieGraph data={categoriesSum.expense} />
                         </Section>
                     </ContentWrapper>
-                    <ButtonWrapper>
-                        <AddButton handleClick={handleClick} />
-                    </ButtonWrapper>
+                    <AddButton handleClick={handleClick} />
                 </>
             )}
         </Wrapper>
