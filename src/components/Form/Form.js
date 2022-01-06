@@ -15,8 +15,6 @@ const Wrapper = styled.form`
     position: relative;
     display: flex;
     flex-direction: column;
-    /* padding: 20px; */
-    /* background-color: pink; */
 `;
 
 const Header = styled.h1`
