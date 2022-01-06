@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
+    height: ${(props) => (props.sizeAuto ? 'auto' : '100%')};
+    width: ${(props) => (props.sizeAuto ? 'auto' : '100%')};
     padding: 16px;
     margin-bottom: 20px;
     border-radius: 5px;
@@ -22,8 +22,12 @@ const Wrapper = styled.section`
     }
 `;
 
-const Section = ({ children, area }) => {
-    return <Wrapper area={area}>{children}</Wrapper>;
+const Section = ({ children, area, sizeAuto }) => {
+    return (
+        <Wrapper area={area} sizeAuto={sizeAuto}>
+            {children}
+        </Wrapper>
+    );
 };
 
 export default Section;
