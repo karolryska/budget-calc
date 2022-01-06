@@ -15,8 +15,11 @@ import useHeight from 'hooks/useHeight';
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     min-height: 100vh;
     width: 100vw;
+    background-color: #bdbdbd;
 
     @media (min-width: 769px) {
         height: auto;
@@ -60,11 +63,13 @@ const App = () => {
     const handleClick = () => setIsFormActive(!isFormActive);
 
     return (
-        <>
+        <Wrapper>
             {isFormActive ? (
-                <Form onSave={handleClick} />
+                <Section sizeAuto>
+                    <Form onSave={handleClick} />
+                </Section>
             ) : (
-                <Wrapper>
+                <>
                     <AppBar />
                     <ContentWrapper height={height - 100}>
                         <Section area="sum">
@@ -84,9 +89,9 @@ const App = () => {
                     <ButtonWrapper>
                         <AddButton handleClick={handleClick} />
                     </ButtonWrapper>
-                </Wrapper>
+                </>
             )}
-        </>
+        </Wrapper>
     );
 };
 
