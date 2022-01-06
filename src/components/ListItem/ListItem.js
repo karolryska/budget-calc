@@ -10,6 +10,7 @@ const Wrapper = styled.li`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-shrink: 0;
     width: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
