@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.js": "/budget-tracker/static/js/main.275e03e6.chunk.js",
-    "main.js.map": "/budget-tracker/static/js/main.275e03e6.chunk.js.map",
-    "runtime-main.js": "/budget-tracker/static/js/runtime-main.3009924a.js",
-    "runtime-main.js.map": "/budget-tracker/static/js/runtime-main.3009924a.js.map",
-    "static/js/2.5520c421.chunk.js": "/budget-tracker/static/js/2.5520c421.chunk.js",
-    "static/js/2.5520c421.chunk.js.map": "/budget-tracker/static/js/2.5520c421.chunk.js.map",
-    "index.html": "/budget-tracker/index.html",
-    "static/js/2.5520c421.chunk.js.LICENSE.txt": "/budget-tracker/static/js/2.5520c421.chunk.js.LICENSE.txt"
+    "main.js": "/budget-calc/static/js/main.275e03e6.chunk.js",
+    "main.js.map": "/budget-calc/static/js/main.275e03e6.chunk.js.map",
+    "runtime-main.js": "/budget-calc/static/js/runtime-main.6af673b5.js",
+    "runtime-main.js.map": "/budget-calc/static/js/runtime-main.6af673b5.js.map",
+    "static/js/2.03f6f636.chunk.js": "/budget-calc/static/js/2.03f6f636.chunk.js",
+    "static/js/2.03f6f636.chunk.js.map": "/budget-calc/static/js/2.03f6f636.chunk.js.map",
+    "index.html": "/budget-calc/index.html",
+    "static/js/2.03f6f636.chunk.js.LICENSE.txt": "/budget-calc/static/js/2.03f6f636.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.3009924a.js",
-    "static/js/2.5520c421.chunk.js",
+    "static/js/runtime-main.6af673b5.js",
+    "static/js/2.03f6f636.chunk.js",
     "static/js/main.275e03e6.chunk.js"
   ]
 }
