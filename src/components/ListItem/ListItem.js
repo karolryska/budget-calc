@@ -14,7 +14,7 @@ const Wrapper = styled.li`
     width: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: ${({ theme }) => theme.colors.white};
     overflow: hidden;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
     transition: 0.2s;

@@ -7,6 +7,8 @@ import {
     Tooltip,
 } from 'recharts';
 
+import { theme } from 'styles/theme';
+
 const Wrapper = styled.div`
     display: flex;
     justify-content: center;
@@ -30,7 +32,7 @@ const LineGraph = ({ data, dataKey }) => {
                         <Line
                             type="monotone"
                             dataKey={dataKey}
-                            stroke="#8884d8"
+                            stroke={theme.colors.blue}
                             activeDot={{ r: 4 }}
                         />
                     </LineChart>

@@ -7,7 +7,7 @@ const Wrapper = styled.header`
     height: 80px;
     width: 100vw;
     padding: 0 20px;
-    background-color: #1976d2;
+    background-color: ${({ theme }) => theme.colors.blue};
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
 
     @media (min-width: 769px) {
@@ -17,7 +17,8 @@ const Wrapper = styled.header`
 
 const Title = styled.h1`
     font-size: 26px;
-    color: #eeeeee;
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.white};
 
     @media (min-width: 769px) {
         font-size: 30px;

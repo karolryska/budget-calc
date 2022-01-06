@@ -8,7 +8,7 @@ const Wrapper = styled.section`
     padding: 16px;
     margin-bottom: 20px;
     border-radius: 5px;
-    background-color: #fafafa;
+    background-color: ${({ theme }) => theme.colors.lightGrey};
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
     grid-area: ${(props) => props.area};
 

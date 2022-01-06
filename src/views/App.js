@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     align-items: center;
     min-height: 100vh;
     width: 100vw;
-    background-color: #bdbdbd;
+    background-color: ${({ theme }) => theme.colors.grey};
 
     @media (min-width: 769px) {
         height: auto;
@@ -31,7 +31,6 @@ const ContentWrapper = styled.main`
     flex-direction: column;
     width: 100vw;
     padding: 20px;
-    background-color: #bdbdbd;
 
     @media (min-width: 769px) {
         display: grid;
