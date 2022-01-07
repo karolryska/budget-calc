@@ -18,10 +18,6 @@ const Wrapper = styled.div`
     }
 `;
 
-const Info = styled.p`
-    text-transform: uppercase;
-`;
-
 const PieGraph = ({ data }) => {
     const [isMobile] = useWidth();
     const [wrapperWidth, setWrapperWidth] = useState(0);
@@ -33,7 +29,7 @@ const PieGraph = ({ data }) => {
 
     return (
         <Wrapper ref={wrapperRef}>
-            {data && data.length > 0 ? (
+            {data && data.length > 0 && (
                 <>
                     <ResponsiveContainer
                         height={isMobile ? wrapperWidth : '95%'}
@@ -58,8 +54,6 @@ const PieGraph = ({ data }) => {
                     </ResponsiveContainer>
                     <Legend data={data} />
                 </>
-            ) : (
-                <Info>no data</Info>
             )}
         </Wrapper>
     );

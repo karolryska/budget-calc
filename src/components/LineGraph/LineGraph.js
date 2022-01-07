@@ -13,7 +13,7 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 200px;
+    height: ${(props) => props.dataStatus && '200px'};
     width: 100%;
 
     @media (min-width: 769px) {
@@ -21,14 +21,10 @@ const Wrapper = styled.div`
     }
 `;
 
-const Info = styled.p`
-    text-transform: uppercase;
-`;
-
 const LineGraph = ({ data, dataKey }) => {
     return (
-        <Wrapper>
-            {data.length > 0 ? (
+        <Wrapper dataStatus={data.length > 0 ? true : false}>
+            {data.length > 0 && (
                 <ResponsiveContainer width="99.9%" height="100%">
                     <LineChart data={[{ value: 0 }].concat(data)}>
                         <CartesianGrid strokeDasharray="5 5" />
@@ -41,8 +37,6 @@ const LineGraph = ({ data, dataKey }) => {
                         />
                     </LineChart>
                 </ResponsiveContainer>
-            ) : (
-                <Info>no data</Info>
             )}
         </Wrapper>
     );
