@@ -29,6 +29,7 @@ const Wrapper = styled.div`
 const ContentWrapper = styled.main`
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
     width: 100vw;
     padding: 20px;
 
