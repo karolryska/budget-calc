@@ -13,8 +13,12 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: 200px;
     width: 100%;
+
+    @media (min-width: 769px) {
+        height: 100%;
+    }
 `;
 
 const Info = styled.p`
