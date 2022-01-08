@@ -10,7 +10,7 @@ const Button = styled.button`
     align-items: center;
     height: 50px;
     width: 50px;
-    background-color: #1976d2;
+    background-color: ${({ theme }) => theme.colors.blue};
     border-radius: 25px;
     border: none;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
