@@ -45,13 +45,15 @@ const Label = styled.label`
 
 const SelectInput = styled.select`
     padding: 5px;
-    border: 1px solid #f2f2f2;
+    border: 1px solid;
+    border-color: ${({ theme }) => theme.colors.grey};
     border-radius: 5px;
 `;
 
 const Input = styled.input`
     padding: 5px;
-    border: 1px solid #f2f2f2;
+    border: 1px solid;
+    border-color: ${({ theme }) => theme.colors.grey};
     border-radius: 5px;
 `;
 
@@ -60,9 +62,14 @@ const Button = styled.button`
     margin-top: 20px;
     border: none;
     border-radius: 5px;
-    background-color: #1976d2;
-    color: #ffffff;
+    background-color: ${({ theme }) => theme.colors.blue};
+    color: ${({ theme }) => theme.colors.white};
+    transition: 0.2s;
     cursor: pointer;
+
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.blueHover};
+    }
 `;
 
 const BackButton = styled.button`
@@ -76,11 +83,16 @@ const BackButton = styled.button`
     width: 40px;
     border: none;
     background-color: transparent;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.white};
+    transition: 0.2s;
     cursor: pointer;
 
     & > * {
         font-size: 30px;
+
+        &:hover {
+            color: ${({ theme }) => theme.colors.darkGrey};
+        }
     }
 `;
 
