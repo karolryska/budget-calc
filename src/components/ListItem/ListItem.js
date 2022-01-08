@@ -14,7 +14,7 @@ const Wrapper = styled.li`
     width: 100%;
     margin-bottom: 10px;
     border-radius: 5px;
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.lightGrey};
     overflow: hidden;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
     transition: 0.2s;
@@ -23,8 +23,10 @@ const Wrapper = styled.li`
         margin-bottom: 0;
     }
 
-    &:hover {
-        background-color: #eeeeee;
+    @media (min-width: 769px) {
+        &:hover {
+            background-color: ${({ theme }) => theme.colors.grey};
+        }
     }
 `;
 
