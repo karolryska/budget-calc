@@ -14,10 +14,16 @@ const Button = styled.button`
     border-radius: 25px;
     border: none;
     box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+    transition: 0.2s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: ${({ theme }) => theme.colors.blueHover};
+    }
 `;
 const Icon = styled(GoPlus)`
     font-size: 30px;
-    color: #ffffff;
+    color: ${({ theme }) => theme.colors.white}; ;
 `;
 
 const AddButton = ({ handleClick }) => {
