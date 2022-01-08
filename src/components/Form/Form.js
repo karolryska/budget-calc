@@ -26,6 +26,7 @@ const RadioInputs = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 40px;
     margin-bottom: 15px;
 `;
 
@@ -58,7 +59,7 @@ const Input = styled.input`
 `;
 
 const Button = styled.button`
-    padding: 6px;
+    padding: 8px;
     margin-top: 20px;
     border: none;
     border-radius: 5px;
