@@ -17,13 +17,18 @@ const Button = styled.button`
     transition: 0.2s;
     cursor: pointer;
 
-    &:hover {
-        background-color: ${({ theme }) => theme.colors.blueHover};
+    @media (min-width: 769px) {
+        bottom: 40px;
+        right: 40px;
+
+        &:hover {
+            background-color: ${({ theme }) => theme.colors.grey};
+        }
     }
 `;
 const Icon = styled(GoPlus)`
     font-size: 30px;
-    color: ${({ theme }) => theme.colors.white}; ;
+    color: ${({ theme }) => theme.colors.white};
 `;
 
 const AddButton = ({ handleClick }) => {
