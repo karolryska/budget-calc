@@ -4,6 +4,7 @@ export const theme = {
         lightGrey: '#fafafa',
         grey: '#eeeeee',
         blue: '#1976d2',
+        blueHover: '#1565c0',
         black: '#111111',
     },
 };
